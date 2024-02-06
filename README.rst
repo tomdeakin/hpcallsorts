@@ -5,4 +5,4 @@ HPC Allsorts
 
 Please visit the rendered webpage at https://www.hpcallsorts.org.
 
-This GitHub repo is the sourcecode for the project, which is generated using `Read the Docs <https://readthedocs.io>`_.
+This GitHub repo is the sourcecode for the project, which is generated using `Read the Docs <https://about.readthedocs.com>`_.
