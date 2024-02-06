@@ -1,9 +1,8 @@
-Template for the Read the Docs tutorial
-=======================================
+HPC Allsorts
+============
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+**HPC Allsorts** is an assorted collection of introductory articles about High Performance Computing and Supercomputing.
 
-Read the tutorial here:
+Please visit the rendered webpage at https://www.hpcallsorts.org.
 
-https://docs.readthedocs.io/en/stable/tutorial/
+This GitHub repo is the sourcecode for the project, which is generated using `Read the Docs <https://readthedocs.io>`_.
