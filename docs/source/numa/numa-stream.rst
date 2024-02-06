@@ -13,16 +13,16 @@ Discover NUMA regions
 How big are NUMA effects?
 -------------------------
 
-To see just how different the performance of accessing memory in different NUMA regions can be, let's do a small experiment on a dual-socket CPU system with Marvell ThunderX2 CPUs. Each socket has 32 cores, each with 4 `simultaneous multithreading (SMT) <https://en.wikipedia.org/wiki/Simultaneous_multithreading>`.
+To see just how different the performance of accessing memory in different NUMA regions can be, let's do a small experiment on a dual-socket CPU system with Marvell ThunderX2 CPUs. Each socket has 32 cores, each with 4 `simultaneous multithreading (SMT) <https://en.wikipedia.org/wiki/Simultaneous_multithreading>`_.
 The core configuration is typical, where CPUs/threads 0-63 are the first thread on each of the 64 physical cores. This system has two NUMA nodes, corresponding to each socket.
 
-The `STREAM benchmark <https://www.cs.virginia.edu/stream/>` measures the sustain memory bandwidth performance of CPUs. It uses the OpenMP programming model to run in parallel on a shared-memory system. It is easy to compile with GCC as follows::
+The `STREAM benchmark <https://www.cs.virginia.edu/stream/>`_ measures the sustain memory bandwidth performance of CPUs. It uses the OpenMP programming model to run in parallel on a shared-memory system. It is easy to compile with GCC as follows::
 
     gcc stream.c -fopenmp -march=native -Ofast -o stream
 
 To experiment with NUMA placement, we can run an experiment where we place all threads on one socket, and access memory in the same NUMA region, and compare to the performance of accessing memory from the other NUMA region.
 
-We therefore can run with 32 OpenMP threads, pinning them to the available cores using OpenMP environment variables. We can also use the `numactl` tool to limit the hardware resources available to the process in terms of the cores and the memory locations. This is controlled with the `-N` and `-m` flags respectively, each taking a node number associated with the particular NUMA region, as shown by the earlier exploration with `numactl -H`::
+We therefore can run with 32 OpenMP threads, pinning them to the available cores using OpenMP environment variables. We can also use the ``numactl`` tool to limit the hardware resources available to the process in terms of the cores and the memory locations. This is controlled with the ``-N`` and ``-m`` flags respectively, each taking a node number associated with the particular NUMA region, as shown by the earlier exploration with ``numactl -H``::
 
     OMP_NUM_THREADS=32 OMP_PLACES=cores OMP_PROC_BIND=close numactl -N 0 -m 0 ./stream
 
